@@ -181,7 +181,7 @@
 .lamp_shade {
   z-index: 2;
   width: 300px;
-  height: 52%;
+  height: calc(75% - (10% + 120px));
   animation: shade 8s linear 1s;
   -webkit-clip-path: polygon(50% 0, 50% 0, 100% 100%, 0% 100%);
 clip-path: polygon(48% 0, 52% 0, 100% 100%, 0% 100%);
