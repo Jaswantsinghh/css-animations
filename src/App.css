@@ -1,38 +1,237 @@
 .App {
-  text-align: center;
+  background-color: #04102B;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.base {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  animation: example 8s linear 1s 1 none;
+  z-index: 2;
+}
+.square1, .square2 {
+  background: linear-gradient(#4de5af,#3bb98c);
+  border-radius: 10px 0px 10px 10px;
+  width: 100px;
+  height: 200px;
+}
+.square2 {
+  border-radius: 0 10px 10px 0;
+  height: 100px;
+  background: linear-gradient(#4de5af,#3bb98c);
+}
+@keyframes example {
+  0%   {
+    transform: rotate(30deg) scale(100);
+  }
+  5% {
+    transform: rotate(30deg) scale(9);
+  }
+  15%  {transform: rotate(40deg) scale(4);}
+  30%  {transform: rotate(80deg) scale(3);}
+  45%  {transform: rotate(120deg) scale(1.5);}
+  60% {transform: rotate(160deg) scale(1.2);}
+  75% {transform: rotate(360deg) scale(1);}
+  100% {transform: rotate(360deg) scale(1);}
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+@keyframes shadow {
+  0% {
+    width: 0;
+  }
+  15% {
+    width: 0;
+  }
+  30% {
+    width: 0;
+  }
+  59% {
+    width: 0;
+  }
+  60% {
+    width: 500px;
+  }
+  61% {
+    width: 0;
+  }
+  75% {
+    width: 600px;
+  }
+  100% {
+    width: 500px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.shadow {
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  width: 500px;
+  height: 30px;
+  transition: .4s;
+  transform: translateX(-50%);
+  -webkit-transition: .4s;
+  -webkit-transform: translateX(-50%);
+  -moz-transition: .4s;
+  -moz-transform: translateX(-50%);
+  animation: shadow 8s linear 1s none;
+  border-radius: 100%;
+  background: radial-gradient(rgb(255 255 255 / 61%), rgba(0,0,0,0.0), rgba(0,0,0,0.0));
+}
+.curtain1, .curtain2 {
+  width: 50%;
+  height: 100vh;
+  background: crimson;
+}
+.curtain1 {
+  animation: curtain1 3s linear 1s 1 forwards;
+}
+.curtain2 {
+  animation: curtain2 3s linear 1s 1 forwards;
+}
+.curtain_base {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  z-index: 3;
+}
+@keyframes curtain1 {
+  0% {
+    transform: translateX(-10%);
+  }
+  15% {
+    transform: translateX(-20%);
+  }
+  30% {
+    transform: translateX(-30%);
+  }
+  60% {
+    transform: translateX(-40%);
+    }
+  75% {
+    transform: translateX(-80%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes curtain2 {
+  0% {
+    transform: translateX(10%);
+  }
+  15% {
+    transform: translateX(20%);
+  }
+  30% {
+    transform: translateX(30%);
+  }
+  60% {
+    transform: translateX(40%);
+    }
+  75% {
+    transform: translateX(80%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+.lamp_base {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.lamp_cup {
+  -webkit-clip-path: polygon(50% 0%, 100% 55%, 100% 100%, 0 100%, 0 55%);
+  clip-path: polygon(45% 0%, 55% 0%, 90% 78%, 100% 75%, 100% 100%, 0 100%, 0 75%, 10% 78%);
+  border-radius: 20%;
+  background: linear-gradient(#eeff55, #ffdf2a);
+  width: 200px;
+  height: 100px;
+}
+.lamp_rod {
+  width: 20px;
+  height: 10%;
+  background: rgb(94, 93, 93);
+}
+.lamp_cup::after {
+  content: "";
+  position: absolute;
+  width: 200px;
+  height: 100px;
+  clip-path: polygon(45% 78%, 55% 78%, 90% 78%, 100% 75%, 100% 100%, 0 100%, 0 75%, 10% 78%);
+  background: rgb(94, 93, 93);
+  border-radius: 20%;
+} 
+.lamp_bulb {
+  width: 40px;
+  height: 20px;
+  border-radius: 50% 50% 100% 100%;
+  background: whitesmoke;
+  animation: bulb 8s linear 1s;
+}
+.lamp_shade {
+  z-index: 2;
+  width: 300px;
+  height: 52%;
+  animation: shade 8s linear 1s;
+  -webkit-clip-path: polygon(50% 0, 50% 0, 100% 100%, 0% 100%);
+clip-path: polygon(48% 0, 52% 0, 100% 100%, 0% 100%);
+background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.592874649859944) 35%, rgba(255, 255, 255, 0) 100%);
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@keyframes shade {
+  0% {
+    background: rgba(245, 245, 245, 0);
   }
-  to {
-    transform: rotate(360deg);
+  15% {
+    background: rgba(245, 245, 245, 0);
+  }
+  59% {
+    background: rgba(245, 245, 245, 0);
+  }
+  60% {
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.592874649859944) 35%, rgba(255, 255, 255, 0) 100%);
+  }
+  61% {
+    background: none;
+  }
+  75% {
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.592874649859944) 35%, rgba(255, 255, 255, 0) 100%);
+  }
+  100% {
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.592874649859944) 35%, rgba(255, 255, 255, 0) 100%);
+  }
+}
+
+@keyframes bulb {
+  0% {
+    background: rgba(245, 245, 245, 0.281);
+  }
+  15% {
+    background: rgba(245, 245, 245, 0.281);
+  }
+  59% {
+    background: rgba(245, 245, 245, 0.281);
+  }
+  60% {
+    background: rgb(245, 245, 245);
+  }
+  61% {
+    background: rgba(245, 245, 245, 0.281);
+  }
+  75% {
+    background: rgb(245, 245, 245);
+  }
+  100% {
+    background: rgb(245, 245, 245);
   }
 }
